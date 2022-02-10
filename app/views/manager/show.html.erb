@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Manager's Feed</h1>
+  <p>Hello <%=current_user.username%>, here are your projects.</p>
+
+  <%= link_to "Create Project", new_project_path, :class => "btn btn-success"%>
+
+
+  <table id='employee-table' class="table table-hover">
+    <thead  class="thead-light">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each_with_index do |project, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= project.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <div>
+    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+  </div>
+</div>

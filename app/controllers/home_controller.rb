@@ -6,13 +6,13 @@ class HomeController < ApplicationController
 
   def index
     if current_user.manager?
-      render '../views/manager/index.html.erb'
+      redirect_to manager_path(current_user.id)
     end
     if current_user.developer?
-      render '../views/developer/index.html.erb'
+      redirect_to developer_path(current_user.id)
     end
     if current_user.quality_assurance?
-      render '../views/qa/index.html.erb'
+      redirect_to qa_path(current_user.id)
     end
   end
 end

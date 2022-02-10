@@ -2,6 +2,6 @@
 
 # QA's home controller
 class QaController < ApplicationController
-  def index
+  def show
   end
 end

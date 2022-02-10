@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'qa/index'
-  get 'developer/index'
-  get 'manager/index'
+  get 'project/show'
+  resources 'project'
+  resources 'manager'
+  resources 'developer'
+  resources 'qa'
+
   devise_for :users
   get 'home/index'
   root to: "home#index"

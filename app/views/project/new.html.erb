@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>New Project</h1>
+  <%= form_with scope: :project, url: project_index_path, local: true do |form| %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
+
+    <p>
+      <%= form.label :creator %><br>
+      <%= form.text_field :creator %>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+</div>

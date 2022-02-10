@@ -2,6 +2,10 @@
 
 # Manager's home controller
 class ManagerController < ApplicationController
-  def index
+  def show
+    @projects = Project.where(manager_id: current_user.id)
+  end
+
+  def create
   end
 end
