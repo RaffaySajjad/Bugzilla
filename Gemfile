@@ -6,6 +6,12 @@ ruby '2.7.2'
 # Add authentication to app
 gem 'devise'
 
+# Add authorization to app
+gem 'pundit', require: 'pundit'
+
+# Add solargraph
+gem 'solargraph', group: 'development'
+
 # Add bootstrap and styling
 gem 'bootstrap'
 gem 'sprockets-rails'

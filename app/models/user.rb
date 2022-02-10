@@ -5,4 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum user_type: { Manager: 0, Developer: 1, Quality_Assurance: 2 }
+
+  def manager?
+    user_type == 'Manager'
+  end
+
+  def developer?
+    user_type == 'Developer'
+  end
+
+  def quality_assurance?
+    user_type == 'Quality_Assurance'
+  end
 end
