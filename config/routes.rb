@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources 'project'
   resources 'manager'
   resources 'developer'
+    get 'developer/explore/:id', to: 'developer#explore', as: 'dev_explore'
   resources 'qa'
 
   devise_for :users

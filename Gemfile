@@ -9,6 +9,10 @@ gem 'devise'
 # Add authorization to app
 gem 'pundit', require: 'pundit'
 
+# For image transformation (Active storage)
+gem "image_processing", ">= 1.2"
+
+
 # Add solargraph
 gem 'solargraph', group: 'development'
 

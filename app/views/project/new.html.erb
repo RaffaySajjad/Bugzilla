@@ -5,7 +5,7 @@
   <%= form_with scope: :project, url: project_index_path, local: true do |form| %>
     <p>
       <%= form.label :title %><br>
-      <%= form.text_field :title %>
+      <%= form.text_field :title, :required => true %>
     </p>
 
     <p>

@@ -22,7 +22,8 @@ class QaController < ApplicationController
 
   def create
     @new_request = Bug.new(params.require(:bug).permit(:project_id, :title, :assignee_id, :status,
-                                                       :description, :creator_id, :deadline, :bug_type))
+                                                       :description, :creator_id, :deadline, :bug_type,
+                                                       screenshots: []))
     @new_request.project_id = $project_id
     @new_request.creator_id = current_user.id
     @new_request.assignee_id = 0
@@ -30,7 +31,6 @@ class QaController < ApplicationController
     @new_request.created_at = Time.now
     @new_request.updated_at = Time.now
     @new_request.save
-    # byebug
     redirect_to qa_path(id: @current_user.id)
   end
 

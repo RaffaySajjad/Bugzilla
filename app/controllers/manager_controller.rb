@@ -15,7 +15,6 @@ class ManagerController < ApplicationController
     # @project = Project.where(project_id: @project_id)
     @project = Project.find_by_id(@project_id)
     @employees = User.where.not(user_type: 'Manager')
-    #byebug
   end
 
   def addtoproject
@@ -30,7 +29,6 @@ class ManagerController < ApplicationController
       @add_user.user_id = @emp_id
       @add_user.save
     end
-
     render '../views/manager/addeduser.html.erb'
   end
 

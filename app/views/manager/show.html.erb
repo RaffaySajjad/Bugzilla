@@ -24,7 +24,7 @@
           <td><%= project.title %></td>
           <td><%= link_to "Manage Users", add_users_path(project), :class => "btn btn-outline-success", :style => "float:right"%></td>
           <td><%= link_to "Delete Project", project_path(project), :class => "btn btn-outline-danger", :style => "float:right", method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Deleting a project will also remove all its associated employee records, any bugs and/ or feature requests. Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

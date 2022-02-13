@@ -34,6 +34,11 @@
     </p>
 
     <p>
+      <%= form.label :screenshots %><br>
+      <%= form.file_field :screenshots, multiple: true%>
+    </p>
+
+    <p>
       <%= form.submit %>
     </p>
   <% end %>

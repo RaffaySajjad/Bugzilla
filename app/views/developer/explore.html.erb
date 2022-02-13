@@ -1,0 +1,72 @@
+<div class="container">
+  <hr/>
+    <h2><%=@task.bug_type + ': ' + @task.title %></h2>
+    <%= link_to "Dashboard", developer_path(current_user.id), :class => "btn btn-success"%>
+  <hr/>
+  <%= form_with scope: :bug, url: developer_index_path, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :project_description, class: 'form-control'%>
+      <%= form.text_field :project_description, value: @task.description, class: 'form-control', disabled: true%><br/>
+    </div>
+
+    <p>
+      <%= form.label :assignee, class: 'form-control'%>
+      <%= form.text_field :assignee, value: "You (Emp Id:" + @task.assignee_id.to_s + ")", disabled: true , class: 'form-control'%><br/>
+    </p>
+
+    <p>
+      <%= form.label :reporter, class: 'form-control' %>
+      <%= form.text_field :reporter, class: 'form-control', value: @reporter.firstname + " " + @reporter.lastname, disabled: true%><br/>
+    </p>
+
+    <p>
+      <%= form.label :current_status, class: 'form-control' %>
+      <%= form.text_field :reporter, class: 'form-control', value: @task.status, disabled: true%><br/>
+    </p>
+
+    <p>
+      <%= form.label :update_status, class: 'form-control' %>
+      <%= form.select(:status, @status.values.to_a, class: 'form-control' )%>
+    </p>
+
+    <p>
+      <%= form.label :deadline, class: 'form-control' %>
+      <%= form.text_field :deadline, class: 'form-control', value: @task.deadline, disabled: true%><br/>
+    </p>
+
+    <%= form.label :images, class: 'form-control' %>
+
+    <%= form.hidden_field :bug_id, :value => @task.id %>
+
+    <br/>
+    <p>
+      <%= form.submit :"Update Status", class: 'btn btn-outline-success' %>
+    </p>
+  <% end %>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <% @task.screenshots.each.with_index do |image, i| %>
+        <li data-target="#myCarousel" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+      <% end %>
+    </ol>
+    <div class="carousel-inner">
+      <% @task.screenshots.each.with_index do |image, i| %>
+        <div class="item <%= 'active' if i == 0 %>">
+          <%= image_tag(image, alt: SecureRandom.uuid, :class => "d-block w-50" )%>
+        </div>
+      <% end %>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+
+</div>
