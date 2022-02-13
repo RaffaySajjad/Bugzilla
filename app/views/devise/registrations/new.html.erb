@@ -12,6 +12,16 @@
                     <%= render "devise/shared/error_messages", resource: resource %>
 
                     <div class="field form-group">
+                      <%= f.label :firstname %><br />
+                      <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", :class => "form-control form-control-lg" %>
+                    </div>
+
+                    <div class="field form-group">
+                      <%= f.label :lastname %><br />
+                      <%= f.text_field :lastname, autofocus: true, autocomplete: "lastname", :class => "form-control form-control-lg" %>
+                    </div>
+
+                    <div class="field form-group">
                       <%= f.label :username %><br />
                       <%= f.text_field :username, autofocus: true, autocomplete: "username", :class => "form-control form-control-lg" %>
                     </div>

@@ -1,0 +1,72 @@
+<div class="container">
+  <h1>Report Bug/ Request Feature </h1>
+  <%= link_to 'Back', :back, :class => "btn btn-outline-success"%>
+  <hr/>
+  <%= form_with scope: :bug, url: qa_index_path, local: true do |form| %>
+    <p>
+      <%= form.label :project_title %><br>
+      <%= form.text_field :project_title, value: @project, disabled: true%>
+    </p>
+
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title%>
+    </p>
+
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_field :description %>
+    </p>
+
+    <p>
+      <%= form.label :bug_type %><br/>
+      <%= form.select(:bug_type, Bug::bug_types.map{|k,v| [k]})%>
+    </p>
+
+    <p>
+      <%= form.label :status %><br>
+      <%= form.text_field :status, value: 'New', disabled: true %><br>
+    </p>
+
+    <p>
+      <%= form.label :deadline %><br>
+      <%= form.date_select :deadline, start_year: Time.now.year, end_year: Time.now.year + 3%>
+    </p>
+
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+
+  <br/>
+  <h1>Active Requests</h1>
+  <hr/>
+
+  <table id='bug-table' class="table table-hover">
+    <thead  class="thead-light">
+      <tr>
+        <th>No</th>
+        <th>Heading</th>
+        <th>Status</th>
+        <th>Deadline</th>
+        <th>Assignee</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @bugs.each_with_index do |bug, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= bug.title %></td>
+          <td><%= bug.status %></td>
+          <td><%= bug.deadline %></td>
+          <td><%= bug.assignee_id %></td>
+          <td><%= link_to "Remove", qa_path(bug), :class => "btn btn-outline-danger", :style => "float:right", method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

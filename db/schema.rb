@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_144945) do
+ActiveRecord::Schema.define(version: 2022_02_11_211412) do
 
   create_table "bugs", force: :cascade do |t|
     t.integer "project_id"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2022_02_10_144945) do
     t.integer "creator_id"
     t.date "deadline"
     t.integer "bug_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_users", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +49,8 @@ ActiveRecord::Schema.define(version: 2022_02_10_144945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_type"
+    t.string "firstname", default: "", null: false
+    t.string "lastname", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

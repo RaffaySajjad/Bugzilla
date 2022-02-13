@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   enum user_type: { Manager: 0, Developer: 1, Quality_Assurance: 2 }
 
-  has_and_belongs_to_many :projects
+  has_many :projects, inverse_of: :manager
+  #has_many :bugs, inverse_of: :assignee
 
   def manager?
     user_type == 'Manager'

@@ -1,6 +1,24 @@
 <div class="container">
-  <h1>Developer's Feed</h1>
-  <p>Hello <%=current_user.username%></p>
+  <h1><%=current_user.firstname%>'s Feed</h1>
+  <p>Hello <%=current_user.firstname + ' ' + current_user.lastname + ' (Emp ID: ' + current_user.id.to_s + ')' %></p>
+  <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-outline-dark" %>
 
-  <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+  <hr/>
+  <table id='employee-table' class="table table-hover">
+    <thead  class="thead-light">
+      <tr>
+        <th>Project Title</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @my_projects.each_with_index do |project, index| %>
+        <tr>
+          <td><%= project.title %></td>
+          <td><%= link_to "Assign Task", new_developer_path(pid: project.id), :class => "btn btn-outline-success", :style => "float:right"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

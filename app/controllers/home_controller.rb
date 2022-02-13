@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if current_user.manager?
+    if (current_user.manager?)
       redirect_to manager_path(current_user.id)
     end
     if current_user.developer?

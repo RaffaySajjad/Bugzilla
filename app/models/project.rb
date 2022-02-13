@@ -1,4 +1,4 @@
 class Project < ApplicationRecord
-  has_and_belongs_to_many :user, foreign_key: true
-  has_many :bug
+  belongs_to :manager, class_name: :User, foreign_key: :manager_id
+  # has_many :bugs, inverse_of: :project
 end
