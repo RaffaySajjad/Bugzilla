@@ -12,6 +12,9 @@ gem 'pundit', require: 'pundit'
 # For image transformation (Active storage)
 gem "image_processing", ">= 1.2"
 
+# Validate active storage file types
+gem 'activestorage-validator'
+
 
 # Add solargraph
 gem 'solargraph', group: 'development'
