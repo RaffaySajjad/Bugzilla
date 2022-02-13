@@ -35,11 +35,11 @@
 
     <p>
       <%= form.label :screenshots %><br>
-      <%= form.file_field :screenshots, multiple: true%>
+      <%= form.file_field :screenshots, multiple: true, class: 'btn btn-outline-primary'%>
     </p>
 
     <p>
-      <%= form.submit:"Create Request", class: 'btn btn-outline-success' %>
+      <%= form.submit:"Create Request", class: 'btn btn-outline-primary' %>
     </p>
   <% end %>
 
@@ -68,7 +68,7 @@
           <td><%= bug.deadline %></td>
           <td><%= bug.assignee_id %></td>
           <td><%= link_to "Remove", qa_path(bug), :class => "btn btn-outline-danger", :style => "float:right", method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Do you really want to delete this bug?' } %></td>
         </tr>
       <% end %>
     </tbody>

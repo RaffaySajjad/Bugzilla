@@ -6,13 +6,12 @@ class DeveloperController < ApplicationController
     @developer_project_ids = ProjectUser.where(user_id: current_user.id).pluck(:project_id)
     @my_projects = Project.where(id: @developer_project_ids)
   end
+
   def new
     $project_id = params[:pid]
     @bugs = Bug.where(project_id: $project_id).where.not(assignee_id: current_user.id)
 
     @my_bugs = Bug.where(project_id: $project_id, assignee_id: current_user.id)
-
-
   end
 
   def index

@@ -1,12 +1,13 @@
 class ProjectController < ApplicationController
+  before_action :init_project, only: %i[create]
+
   def show
   end
 
   def create
-    @new_project = Project.new(params.require(:project).permit(:title, :manager_id))
-    @new_project.manager_id = current_user.id
-    @new_project.save
-    redirect_to project_path(@new_project)
+    @project.manager_id = current_user.id
+    @project.save
+    redirect_to project_path(@project)
   end
 
   def show
@@ -16,5 +17,11 @@ class ProjectController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
     redirect_to manager_path(current_user.id)
+  end
+
+  private
+
+  def init_project
+    @project = Project.new(params.require(:project).permit(:title, :manager_id))
   end
 end
