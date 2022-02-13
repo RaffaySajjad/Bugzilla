@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum user_type: { Manager: 0, Developer: 1, Quality_Assurance: 2 }
+  enum user_type: { Manager: 0, Developer: 1, 'Quality Assurance': 2 }
 
   has_many :projects, inverse_of: :manager
-  #has_many :bugs, inverse_of: :assignee
+  # has_many :bugs, inverse_of: :assignee
 
   def manager?
     user_type == 'Manager'
@@ -18,6 +18,6 @@ class User < ApplicationRecord
   end
 
   def quality_assurance?
-    user_type == 'Quality_Assurance'
+    user_type == 'Quality Assurance'
   end
 end

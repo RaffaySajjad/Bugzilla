@@ -31,6 +31,7 @@ class QaController < ApplicationController
     @new_request.created_at = Time.now
     @new_request.updated_at = Time.now
     @new_request.save
+    byebug
     redirect_to qa_path(id: @current_user.id)
   end
 
