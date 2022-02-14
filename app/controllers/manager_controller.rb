@@ -22,7 +22,7 @@ class ManagerController < ApplicationController
     @employees = User.where.not(user_type: 'Manager').where.not(id: @selected_users)
   end
 
-  def addtoproject
+  def add_to_project
     @project_id = params[:pid]
 
     if @record.blank?
@@ -38,7 +38,7 @@ class ManagerController < ApplicationController
     # render '../views/manager/addeduser.html.erb'
   end
 
-  def deletefromproject
+  def delete_from_project
     @project_id = params[:pid]
     @record.destroy_all
 

@@ -3,8 +3,8 @@ class UserPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-    def index
-
+    def show?
+      current_user == @record.user
     end
   end
 end
