@@ -16,7 +16,7 @@
       <% @my_projects.each_with_index do |project, index| %>
         <tr>
           <td><%= project.title %></td>
-          <td><%= link_to "Assign Task", new_developer_path(pid: project.id), :class => "btn btn-outline-success", :style => "float:right"%></td>
+          <td><%= link_to "Assign Tasks", new_developer_path(pid: project.id), :class => "btn btn-outline-success", :style => "float:right"%></td>
         </tr>
       <% end %>
     </tbody>

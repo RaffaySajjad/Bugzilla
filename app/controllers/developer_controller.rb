@@ -14,9 +14,7 @@ class DeveloperController < ApplicationController
   end
 
   def index
-    @bug_id = params[:bid]
-    @bugs = Bug.find_by(id: @bug_id)
-    @bugs.update(assignee_id: current_user.id)
+    @bugs = Bug.find_by(id: params[:bid]).update(assignee_id: current_user.id)
     @bugs.save
     redirect_to new_developer_path(pid: $project_id, bid: @bugs)
   end
@@ -25,7 +23,6 @@ class DeveloperController < ApplicationController
     @task = Bug.find_by_id(params[:id])
     @reporter = User.find_by_id(@task.creator_id)
 
-    # enum status: { New: 0, Started: 1, Completed: 2, Resolved: 3 }
     @status = {}
     @status[0] = 'New'
     @status[1] = 'Started'
