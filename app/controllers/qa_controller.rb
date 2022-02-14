@@ -17,7 +17,8 @@ class QaController < ApplicationController
   def destroy
     @bug = Bug.find(params[:id])
     @bug.destroy
-    redirect_to qa_path(current_user.id)
+    respond_to do |format| format.html { redirect_to request.referer, alert: 'Record has been deleted successfully'} end
+    # redirect_to qa_path(current_user.id)
   end
 
   def create
@@ -30,8 +31,15 @@ class QaController < ApplicationController
     @new_request.status = 0
     @new_request.created_at = Time.now
     @new_request.updated_at = Time.now
-    @new_request.save
-    redirect_to qa_path(id: @current_user.id)
+
+    @existing_title = Bug.where(project_id: $project_id).pluck(:title)
+    if @existing_title.include? @new_request.title
+      respond_to do |format| format.html { redirect_to request.referer, alert: 'A Bug/ Feture with this name already exists'} end
+    else
+      @new_request.save
+      respond_to do |format| format.html { redirect_to request.referer, alert: 'Ticket has been created successfully'} end
+      # redirect_to qa_path(id: @current_user.id)
+    end
   end
 
   def index

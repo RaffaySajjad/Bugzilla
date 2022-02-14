@@ -3,5 +3,8 @@ class UserPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+    def index
+
+    end
   end
 end

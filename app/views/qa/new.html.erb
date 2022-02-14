@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Report Bug/ Request Feature </h1>
-  <%= link_to 'Back', :back, :class => "btn btn-outline-success"%>
+  <%= link_to "Dashboard", qa_path(current_user.id), :class => "btn btn-success"%>
   <hr/>
   <%= form_with scope: :bug, url: qa_index_path, local: true do |form| %>
     <p>
@@ -52,9 +52,10 @@
       <tr>
         <th>No</th>
         <th>Heading</th>
+        <th>Type</th>
         <th>Status</th>
         <th>Deadline</th>
-        <th>Assignee</th>
+        <th>Assignee ID</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -64,6 +65,7 @@
         <tr>
           <td><%= index + 1 %></td>
           <td><%= bug.title %></td>
+          <td><%= bug.bug_type %></td>
           <td><%= bug.status %></td>
           <td><%= bug.deadline %></td>
           <td><%= bug.assignee_id %></td>

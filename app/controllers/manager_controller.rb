@@ -24,11 +24,17 @@ class ManagerController < ApplicationController
       @add_user.user_id = @emp_id
       @add_user.save
     end
-    render '../views/manager/addeduser.html.erb'
+    respond_to do |format|
+      format.html { redirect_to request.referer, alert: 'Employee has been added to the project' }
+    end
+    # render '../views/manager/addeduser.html.erb'
   end
 
   def deletefromproject
     @record.destroy_all
+    respond_to do |format|
+      format.html { redirect_to request.referer, alert: 'Employee has been removed from the project' }
+    end
   end
 
   private

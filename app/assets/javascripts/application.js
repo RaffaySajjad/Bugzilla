@@ -22,11 +22,11 @@
 $(document).on('turbolinks:load', function() {
   setTimeout(function() {
     $('.alert').fadeOut();
-  }, 3000);
+  }, 10000);
 })
 
 $(document).on('turbolinks:load', function() {
   setTimeout(function() {
     $('.notice').fadeOut();
-  }, 3000);
+  }, 10000);
 })
