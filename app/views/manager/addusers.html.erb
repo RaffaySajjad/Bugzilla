@@ -25,6 +25,38 @@
           <td><%= employee.firstname + ' ' + employee.lastname %></td>
           <td><%= employee.user_type %></td>
           <td><%= link_to "Add to Project", add_to_project_path(eid: employee, pid: @project_id), :class => "btn btn-outline-success", :style => "float:right"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+<hr/>
+  <h2>Active Employees</h2>
+  <hr/>
+  <table id='employee-table' class="table table-hover">
+    <thead  class="thead-light">
+      <tr>
+        <th>No.</th>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @selected_users.each_with_index do |employee, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= employee.id %></td>
+          <td><%= employee.firstname + ' ' + employee.lastname %></td>
+          <td><%= employee.username %></td>
+          <td><%= employee.email %></td>
+          <td><%= employee.user_type %></td>
           <td><%= link_to "Remove from Project", delete_from_project_path(eid: employee, pid: @project_id), :class => "btn btn-outline-danger", :style => "float:right"%></td>
         </tr>
       <% end %>

@@ -10,9 +10,6 @@ class ProjectController < ApplicationController
     redirect_to project_path(@project)
   end
 
-  def show
-  end
-
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
