@@ -2,7 +2,7 @@
   <h1><%=current_user.firstname%>'s Feed</h1>
   <p>Hello <%=current_user.firstname + ' ' + current_user.lastname + ' (Emp ID: ' + current_user.id.to_s + ')' %></p>
   <%= link_to "Dashboard", developer_path(current_user.id), :class => "btn btn-success"%>
-  <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-outline-dark", :style => "float: right"%>
+  <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-outline-dark", :style => "float:right"%>
   <hr/>
   <h2>My tasks</h2>
   <hr/>
@@ -24,7 +24,7 @@
           <td><%= bug.status %></td>
           <td><%= bug.deadline %></td>
           <td><%= bug.bug_type %></td>
-          <td><%= link_to "Explore", dev_explore_path(id: bug), :class => "btn btn-outline-success", :style => "float:right"%></td>
+          <td><%= link_to "Explore", developer_explore_index_path(developer_id: bug), :class => "btn btn-outline-success", :style => "float:right"%></td>
         </tr>
       <% end %>
     </tbody>
@@ -52,7 +52,7 @@
           <td><%= bug.assignee_id %></td>
           <td><%= bug.deadline %></td>
           <td><%= bug.bug_type %></td>
-          <td><%= link_to "Take up", developer_index_path(pid: $project_id, bid: bug), :class => "btn btn-outline-success", :style => "float:right"%></td>
+          <td><%= link_to "Take up", developer_index_path(pid: @project_id, bid: bug), :class => "btn btn-outline-success", :style => "float:right"%></td>
         </tr>
       <% end %>
     </tbody>

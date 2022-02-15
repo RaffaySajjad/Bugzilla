@@ -2,7 +2,7 @@
   <h1><%=current_user.firstname%>'s Feed</h1>
   <p>Hello <%=current_user.firstname + ' ' + current_user.lastname + ' (Emp ID: ' + current_user.id.to_s + '), here are your projects.' %></p>
 
-  <%= link_to "Create Project", new_project_path, :class => "btn btn-success"%>
+  <%= link_to "Create Project", manager_project_index_path(current_user.id), :class => "btn btn-success"%>
   <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-outline-dark", :style => "float:right"%>
   <hr/>
 
@@ -22,8 +22,8 @@
           <td><%= index + 1 %></td>
           <td><%= project.id %></td>
           <td><%= project.title %></td>
-          <td><%= link_to "Manage Users", add_users_path(project), :class => "btn btn-outline-success", :style => "float:right"%></td>
-          <td><%= link_to "Delete Project", project_path(project), :class => "btn btn-outline-danger", :style => "float:right", method: :delete,
+          <td><%= link_to "Manage Users", manager_project_path(current_user.id, project), :class => "btn btn-outline-success", :style => "float:right"%></td>
+          <td><%= link_to "Delete Project", manager_project_path(current_user.id, project), :class => "btn btn-outline-danger", :style => "float:right", method: :delete,
               data: { confirm: 'Deleting a project will also remove all its associated employee records, any bugs and/ or feature requests. Are you sure?' } %></td>
         </tr>
       <% end %>

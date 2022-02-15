@@ -3,7 +3,7 @@
     <h2><%=@task.bug_type + ': ' + @task.title %></h2>
     <%= link_to "Dashboard", developer_path(current_user.id), :class => "btn btn-success"%>
   <hr/>
-  <%= form_with scope: :bug, url: developer_index_path, local: true do |form| %>
+  <%= form_with scope: :bug, url: developer_explore_index_path, local: true do |form| %>
     <div class="form-group">
       <%= form.label :project_description, class: 'form-control'%>
       <%= form.text_field :project_description, value: @task.description, class: 'form-control', disabled: true%><br/>

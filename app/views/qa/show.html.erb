@@ -16,7 +16,7 @@
       <% @my_projects.each_with_index do |project, index| %>
         <tr>
           <td><%= project.title %></td>
-          <td><%= link_to "Manage Bugs/ Features", new_qa_path(type: 'bug', pid: project.id), :class => "btn btn-outline-success", :style => "float:right"%></td>
+          <td><%= link_to "Add Bugs/ Features", new_qa_path(type: 'bug', pid: project.id), :class => "btn btn-outline-success", :style => "float:right"%></td>
         </tr>
       <% end %>
     </tbody>

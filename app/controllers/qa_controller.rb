@@ -10,14 +10,14 @@ class QaController < ApplicationController
   def new
     @type = params[:type]
     $project_id = params[:pid]
-    @project = Project.where(:id => $project_id).select(:title).last[:title]
-    @bugs = Bug.where(creator_id: current_user.id).where(:project_id => $project_id)
+    @project = Project.where(id: $project_id).select(:title).last[:title]
+    @bugs = Bug.where(creator_id: current_user.id).where(project_id: $project_id)
   end
 
   def destroy
     @bug = Bug.find(params[:id])
     @bug.destroy
-    respond_to do |format| format.html { redirect_to request.referer, alert: 'Record has been deleted successfully'} end
+    respond_to { |format| format.html { redirect_to request.referer, alert: 'Record has been deleted successfully' } }
     # redirect_to qa_path(current_user.id)
   end
 
@@ -34,10 +34,10 @@ class QaController < ApplicationController
 
     @existing_title = Bug.where(project_id: $project_id).pluck(:title)
     if @existing_title.include? @new_request.title
-      respond_to do |format| format.html { redirect_to request.referer, alert: 'A Bug/ Feture with this name already exists'} end
+      respond_to { |format| format.html { redirect_to request.referer, alert: 'A Bug/ Feture with this name already exists' } }
     else
       @new_request.save
-      respond_to do |format| format.html { redirect_to request.referer, alert: 'Ticket has been created successfully'} end
+      respond_to { |format| format.html { redirect_to request.referer, alert: 'Ticket has been created successfully' } }
       # redirect_to qa_path(id: @current_user.id)
     end
   end
